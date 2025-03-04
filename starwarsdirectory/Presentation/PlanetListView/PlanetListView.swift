@@ -17,7 +17,12 @@ struct PlanetListView: View {
     var body: some View {
         List {
             ForEach(viewModel.planets) { planet in
-                Text(planet.name)
+                NavigationLink(destination: {
+                        PlanetDetailView(planet: planet)
+                    }) {
+                        Text(planet.name)
+                    }
+                
             }
             if viewModel.canLoadMore {
                 ProgressView()
@@ -33,5 +38,8 @@ struct PlanetListView: View {
 }
 
 #Preview {
-    PlanetListView(planetProvider: PreviewPlanetProvider())
+    NavigationStack {
+        PlanetListView(planetProvider: PreviewPlanetProvider())
+    }
+    
 }
