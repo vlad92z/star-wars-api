@@ -19,11 +19,16 @@ struct PlanetListView: View {
             ForEach(viewModel.planets) { planet in
                 Text(planet.name)
             }
+            if viewModel.canLoadMore {
+                ProgressView()
+                    .id(viewModel.planets.count)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .task {
+                        await viewModel.loadMore()
+                    }
+            }
         }
         .navigationTitle("Planets")
-        .task {
-            await viewModel.loadMore()
-        }
     }
 }
 

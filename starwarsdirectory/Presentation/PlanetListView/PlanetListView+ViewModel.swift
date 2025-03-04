@@ -13,25 +13,28 @@ extension PlanetListView {
         private let planetProvider: PlanetProviding
         
         @Published var planets: [Planet] = []
+        @Published var canLoadMore: Bool
         @Published var errorMessage: String?
         
         init(planetProvider: PlanetProviding) {
             self.planetProvider = planetProvider
+            self.canLoadMore = planetProvider.hasNext
         }
         
         func loadMore() async {
-            guard planetProvider.hasNext else {
+            guard canLoadMore else {
                 return
             }
+
             let planetResult = await planetProvider.loadNext()
-            switch planetResult {
-            case .success(let newPlanets):
-                await MainActor.run {
+            await MainActor.run {
+                switch planetResult {
+                case .success(let newPlanets):
                     planets.append(contentsOf: newPlanets)
-                }
-            case .failure(let error):
-                await MainActor.run {
-                    self.errorMessage = error.localizedDescription
+                    canLoadMore = planetProvider.hasNext
+                case .failure(let error):
+                    errorMessage = error.localizedDescription
+                    canLoadMore = planetProvider.hasNext
                 }
             }
         }
