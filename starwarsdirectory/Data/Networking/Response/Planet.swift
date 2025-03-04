@@ -10,18 +10,18 @@ struct Planet: Codable, Identifiable {
     
     let url: String
     let name: String
-    let rotationPeriod: Int
-    let orbitalPeriod: Int
-    let diameter: Int
+    let rotationPeriod: String
+    let orbitalPeriod: String
+    let diameter: String
     let climate: String
     let gravity: String
     let terrain: String
-    let surfaceWater: Int
-    let population: Int
+    let surfaceWater: String
+    let population: String
     let residents: [String]
     let films: [String]
-    let created: Date
-    let edited: Date
+    let created: String
+    let edited: String
     
     var id: String {
         url

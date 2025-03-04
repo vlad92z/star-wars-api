@@ -8,7 +8,7 @@
 import SwiftUICore
 
 private struct PlanetProviderKey: EnvironmentKey {
-    static let defaultValue: any PlanetProviding = PlanetProvider()
+    static let defaultValue: any PlanetProviding = PreviewPlanetProvider()
 }
 
 extension EnvironmentValues {

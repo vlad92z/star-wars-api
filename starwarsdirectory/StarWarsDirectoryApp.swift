@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct StarWarsDirectoryApp: App {
     
-    private let planetProvider: any PlanetProviding = PlanetProvider()
+    private var planetProvider = PlanetProvider()
     
     var body: some Scene {
         WindowGroup {

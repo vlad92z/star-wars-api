@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @Environment(\.planetProvider) private var planetProvider
+    
     var body: some View {
         NavigationStack {
-            PlanetListView()
+            PlanetListView(planetProvider: planetProvider)
         }
     }
 }

@@ -12,14 +12,14 @@ extension Planet {
         return Planet(
             url: url,
             name: name,
-            rotationPeriod: 23,
-            orbitalPeriod: 304,
-            diameter: 10465,
+            rotationPeriod: "23",
+            orbitalPeriod: "304",
+            diameter: "10465",
             climate: "arid",
             gravity: "1 standard",
             terrain: "desert",
-            surfaceWater: 1,
-            population: 200000,
+            surfaceWater: "1",
+            population: "200000",
             residents: [
                 "https://swapi.dev/api/people/1/",
                 "https://swapi.dev/api/people/2/",
@@ -39,7 +39,8 @@ extension Planet {
                 "https://swapi.dev/api/films/5/",
                 "https://swapi.dev/api/films/6/"
             ],
-            created: Date(),
-            edited: Date())
+            created: "2014-12-09T13:50:49.641000Z",
+            edited: "2014-12-09T13:50:49.641000Z"
+        )
     }
 }
