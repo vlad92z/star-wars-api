@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23605" systemVersion="24A335" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="PlanetEntity" representedClassName="PlanetEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="climate_nonOptional" attributeType="String"/>
+        <attribute name="created_nonOptional" attributeType="String"/>
+        <attribute name="diameter_nonOptional" attributeType="String"/>
+        <attribute name="edited_nonOptional" attributeType="String"/>
+        <attribute name="films_nonOptional" attributeType="Binary"/>
+        <attribute name="gravity_nonOptional" attributeType="String"/>
+        <attribute name="name_nonOptional" attributeType="String"/>
+        <attribute name="orbitalPeriod_nonOptional" attributeType="String"/>
+        <attribute name="page" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="population_nonOptional" attributeType="String"/>
+        <attribute name="residents_nonOptional" attributeType="Binary"/>
+        <attribute name="rotationPeriod_nonOptional" attributeType="String"/>
+        <attribute name="surfaceWater_nonOptional" attributeType="String"/>
+        <attribute name="terrain_nonOptional" attributeType="String"/>
+        <attribute name="url_nonOptional" attributeType="String"/>
+    </entity>
+</model>

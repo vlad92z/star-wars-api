@@ -8,7 +8,7 @@ import Alamofire
 
 protocol PlanetAPI {
     
-    func requestPlanets(_ url: String) async throws -> PlanetListResponse
+    func requestPlanets(_ url: String, parameters: [String : Any]?) async throws -> PlanetListResponse
 }
 
 class AlamoPlanetApi: PlanetAPI {
@@ -19,7 +19,7 @@ class AlamoPlanetApi: PlanetAPI {
         self.api = api
     }
     
-    func requestPlanets(_ url: String) async throws -> PlanetListResponse {
-        return try await api.get(url)
+    func requestPlanets(_ url: String, parameters: [String : Any]?) async throws -> PlanetListResponse {
+        return try await api.get(url, parameters: parameters)
     }
 }

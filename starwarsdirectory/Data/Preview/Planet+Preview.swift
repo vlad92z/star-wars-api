@@ -6,10 +6,10 @@
 //
 import Foundation
 
-extension Planet {
+extension PlanetResponse {
     
-    static func preview(name: String, url: String) -> Planet {
-        return Planet(
+    static func preview(name: String, url: String) -> PlanetResponse {
+        return PlanetResponse(
             url: url,
             name: name,
             rotationPeriod: "23",

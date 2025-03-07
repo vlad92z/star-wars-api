@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct Planet: Codable, Identifiable {
+struct PlanetResponse: Codable, Identifiable {
     
     let url: String
     let name: String

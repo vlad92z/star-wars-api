@@ -8,7 +8,7 @@ import SwiftUI
 
 struct PlanetDetailView: View {
     
-    let planet: Planet
+    let planet: PlanetResponse
     
     var body: some View {
         List {
@@ -29,7 +29,7 @@ struct PlanetDetailView: View {
 
 #Preview {
     NavigationStack {
-        PlanetDetailView(planet: Planet.preview(name: "Tatooine", url: "123"))
+        PlanetDetailView(planet: PlanetResponse.preview(name: "Tatooine", url: "123"))
     }
     
 }

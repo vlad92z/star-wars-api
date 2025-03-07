@@ -8,17 +8,17 @@
 class PreviewPlanetProvider: PlanetProviding {
     
     private var currentIndex = -1
-    private var planetPages: [[Planet]] = [
+    private var planetPages: [[PlanetResponse]] = [
         [
-            Planet.preview(name: "Tatooine", url: "https://swapi.dev/api/planets/1/"),
-            Planet.preview(name: "Alderaan", url: "https://swapi.dev/api/planets/2/"),
-            Planet.preview(name: "Yavin IV", url: "https://swapi.dev/api/planets/3/")
+            PlanetResponse.preview(name: "Tatooine", url: "https://swapi.dev/api/planets/1/"),
+            PlanetResponse.preview(name: "Alderaan", url: "https://swapi.dev/api/planets/2/"),
+            PlanetResponse.preview(name: "Yavin IV", url: "https://swapi.dev/api/planets/3/")
         ],
         [
-            Planet.preview(name: "Hoth", url: "https://swapi.dev/api/planets/4/")
+            PlanetResponse.preview(name: "Hoth", url: "https://swapi.dev/api/planets/4/")
         ],
         [
-            Planet.preview(name: "Dagobah", url: "https://swapi.dev/api/planets/5/")
+            PlanetResponse.preview(name: "Dagobah", url: "https://swapi.dev/api/planets/5/")
         ]
     ]
     
@@ -26,15 +26,15 @@ class PreviewPlanetProvider: PlanetProviding {
     
     var hasPrevious: Bool {  currentIndex > 0 }
     
-    func loadNext() async -> Result<[Planet], PlanetProviderError> {
-        guard hasNext else { return .failure(.unavailable(message: "Last page reached")) }
+    func loadNext() async -> [PlanetResponse] {
+        guard hasNext else { return [] }
         currentIndex += 1
-        return .success(planetPages[currentIndex])
+        return planetPages[currentIndex]
     }
     
-    func loadPrevious() async -> Result<[Planet], PlanetProviderError> {
-        guard hasPrevious else { return .failure(.unavailable(message: "Already on first page")) }
+    func loadPrevious() async -> [PlanetResponse] {
+        guard hasPrevious else { return [] }
         currentIndex -= 1
-        return .success(planetPages[currentIndex])
+        return planetPages[currentIndex]
     }
 }
