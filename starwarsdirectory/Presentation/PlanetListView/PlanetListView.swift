@@ -8,6 +8,7 @@ import SwiftUI
 
 struct PlanetListView: View {
     
+    @Environment(\.personRepository) private var personRepository
     @StateObject var viewModel: ViewModel
     
     init(planetProvider: PlanetProviding) {
@@ -18,7 +19,7 @@ struct PlanetListView: View {
         List {
             ForEach(viewModel.planets) { planet in
                 NavigationLink(destination: {
-                        PlanetDetailView(planet: planet)
+                    PlanetDetailView(planet: planet, personRepository: personRepository)
                     }) {
                         Text(planet.name)
                     }

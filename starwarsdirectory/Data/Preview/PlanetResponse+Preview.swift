@@ -1,5 +1,5 @@
 //
-//  Planet+Preview.swift
+//  PlanetResponse+Preview.swift
 //  starwarsdirectory
 //
 //  Created by Vlad on 02/03/2025.

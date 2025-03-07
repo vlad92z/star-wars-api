@@ -11,6 +11,7 @@ import SwiftUI
 struct StarWarsDirectoryApp: App {
     
     private let persistenceController = PersistenceController.shared
+    private var personRepository = RemotePersonRepository()
     private var planetProvider = PlanetProvider(repository: CachingPlanetRepository(
         coreDataRepository: CoreDataPlanetRepository(
             context: PersistenceController.shared.container.viewContext
@@ -22,6 +23,7 @@ struct StarWarsDirectoryApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.planetProvider, planetProvider)
+                .environment(\.personRepository, personRepository)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
