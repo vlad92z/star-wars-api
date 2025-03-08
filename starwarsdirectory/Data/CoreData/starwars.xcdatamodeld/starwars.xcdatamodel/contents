@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23605" systemVersion="24A335" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="PersonEntity" representedClassName="PersonEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="birthYear_nonOptional" attributeType="String"/>
+        <attribute name="created_nonOptional" attributeType="String"/>
+        <attribute name="edited_nonOptional" attributeType="String"/>
+        <attribute name="eyeColor_nonOptional" attributeType="String"/>
+        <attribute name="films_nonOptional" attributeType="Binary"/>
+        <attribute name="gender_nonOptional" attributeType="String"/>
+        <attribute name="hairColor_nonOptional" attributeType="String"/>
+        <attribute name="height_nonOptional" attributeType="String"/>
+        <attribute name="homeworld_nonOptional" attributeType="String"/>
+        <attribute name="mass_nonOptional" attributeType="String"/>
+        <attribute name="name_nonOptional" attributeType="String"/>
+        <attribute name="skinColor_nonOptional" attributeType="String"/>
+        <attribute name="species_nonOptional" attributeType="Binary"/>
+        <attribute name="starships_nonOptional" attributeType="Binary"/>
+        <attribute name="url_nonOptional" attributeType="String"/>
+        <attribute name="vehicles_nonOptional" attributeType="Binary"/>
+    </entity>
     <entity name="PlanetEntity" representedClassName="PlanetEntity" syncable="YES" codeGenerationType="class">
         <attribute name="climate_nonOptional" attributeType="String"/>
         <attribute name="created_nonOptional" attributeType="String"/>
