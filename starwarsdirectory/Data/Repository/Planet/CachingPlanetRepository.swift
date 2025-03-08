@@ -4,6 +4,7 @@
 //
 //  Created by Vlad on 06/03/2025.
 //
+import os.log
 
 class CachingPlanetRepository: PaginatedPlanetRepository {
     
@@ -19,7 +20,7 @@ class CachingPlanetRepository: PaginatedPlanetRepository {
         let localPlanets = await coreDataRepository.getPlanets(for: page)
         //TODO: Check for Stale data (e.g. update once per day)
         if !localPlanets.isEmpty {
-            //TODO: Check for stale data
+            Logger.coredata.debug("Fetched local planets for page \(page)")
             return localPlanets
         }
         let remotePlanets = await remoteRepository.getPlanets(for: page)

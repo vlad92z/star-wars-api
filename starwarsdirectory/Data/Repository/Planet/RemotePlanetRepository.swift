@@ -4,6 +4,8 @@
 //
 //  Created by Vlad on 06/03/2025.
 //
+import os.log
+
 class RemotePlanetRepository: PaginatedPlanetRepository {
     
     private let api: PlanetAPI
@@ -21,7 +23,7 @@ class RemotePlanetRepository: PaginatedPlanetRepository {
             hasNextPage = response.next != nil
             return response.results
         } catch {
-            // TODO: Log Error
+            Logger.coredata.error("Failed to download planet metadata: \(error.localizedDescription)")
             return []
         }
     }

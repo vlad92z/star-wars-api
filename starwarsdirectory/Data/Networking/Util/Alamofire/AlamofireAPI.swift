@@ -6,6 +6,7 @@
 //
 import Alamofire
 import Foundation
+import os.log
 
 struct AlamofireAPI<T: Decodable>: NetworkAPI {
     
@@ -16,21 +17,24 @@ struct AlamofireAPI<T: Decodable>: NetworkAPI {
         } else {
             AF.request(url, method: method.toAlamofire, headers: headers)
         }
-        let result = await request
+        let response = await request
             .cacheResponse(using: .cache)
             .validate()
             .serializingDecodable(T.self, decoder: decoder)
             .response
-            .result
+            
+        let result = response.result
         switch result {
         case .success(let serialized):
+            Logger.network.debug("Network Request Success for \(url)")
             return serialized
         case .failure(let error):
+            Logger.network.error("Netweork Request failed for \(url): \(error)")
             throw NetworkError(from: error)
         }
     }
     
-    // consider storing it somewhere to avoid instantiating for every request
+    // TODO: Consider storing it somewhere to avoid instantiating for every request
     private var decoder: JSONDecoder {
         let snakeDecoder = JSONDecoder()
         snakeDecoder.keyDecodingStrategy = .convertFromSnakeCase

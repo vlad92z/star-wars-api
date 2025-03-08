@@ -5,6 +5,7 @@
 //  Created by Vlad on 06/03/2025.
 //
 import CoreData
+import os.log
 
 extension PlanetEntity {
     
@@ -16,9 +17,10 @@ extension PlanetEntity {
                     process(response: planet, page: page, editDate: editDate, in: context)
                 }
                 try context.save()
+                Logger.coredata.debug("Persisted planets in CoreData for page: \(page)")
             }
         } catch {
-            //TODO: Log Error
+            Logger.coredata.error("Failed to persist planets: \(error.localizedDescription)")
         }
         
     }

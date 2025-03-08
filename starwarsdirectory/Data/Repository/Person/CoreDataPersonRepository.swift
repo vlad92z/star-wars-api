@@ -6,6 +6,7 @@
 //
 import CoreData
 import Combine
+import os.log
 
 class CoreDataPersonRepository: PersonRepository {
     
@@ -21,7 +22,7 @@ class CoreDataPersonRepository: PersonRepository {
             let entities = try context.fetch(request)
             return entities.map { $0.personResponse }
         } catch {
-            //TODO: Log error
+            Logger.coredata.error("Failed to fetch people: \(error.localizedDescription)")
             return []
         }
     }

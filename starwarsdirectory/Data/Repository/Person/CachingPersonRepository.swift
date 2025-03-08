@@ -4,6 +4,7 @@
 //
 //  Created by Vlad on 06/03/2025.
 //
+import os.log
 
 class CachingPersonRepository: PersonRepository {
     
@@ -19,6 +20,7 @@ class CachingPersonRepository: PersonRepository {
         let localPeople = await coreDataRepository.getPeople(idList: idList)
         //TODO: Check for Stale data (e.g. update once per day)
         if !localPeople.isEmpty {
+            Logger.coredata.debug("Fetched local people")
             return localPeople
         }
         let remotePeople = await remoteRepository.getPeople(idList: idList)

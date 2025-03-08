@@ -5,6 +5,7 @@
 //  Created by Vlad on 06/03/2025.
 //
 import CoreData
+import os.log
 
 extension PersonEntity {
     
@@ -97,7 +98,7 @@ extension PersonEntity {
             do {
                 return try JSONDecoder().decode([String].self, from: data)
             } catch {
-                //TODO: Log error
+                Logger.coredata.error("Failed to decode films: \(error.localizedDescription)")
                 return []
             }
             
@@ -107,7 +108,7 @@ extension PersonEntity {
                 let filmUrls = try JSONEncoder().encode(newValue)
                 films_nonOptional = filmUrls
             } catch {
-                //TODO: Log error
+                Logger.coredata.error("Failed to encode films: \(error.localizedDescription)")
             }
         }
     }
@@ -118,7 +119,7 @@ extension PersonEntity {
             do {
                 return try JSONDecoder().decode([String].self, from: data)
             } catch {
-                //TODO: Log error
+                Logger.coredata.error("Failed to decode species: \(error.localizedDescription)")
                 return []
             }
             
@@ -128,7 +129,7 @@ extension PersonEntity {
                 let speciesUrls = try JSONEncoder().encode(newValue)
                 species_nonOptional = speciesUrls
             } catch {
-                //TODO: Log error
+                Logger.coredata.error("Failed to encode species: \(error.localizedDescription)")
             }
         }
     }
@@ -139,7 +140,7 @@ extension PersonEntity {
             do {
                 return try JSONDecoder().decode([String].self, from: data)
             } catch {
-                //TODO: Log error
+                Logger.coredata.error("Failed to decode vehicles: \(error.localizedDescription)")
                 return []
             }
             
@@ -149,7 +150,7 @@ extension PersonEntity {
                 let vehicleUrls = try JSONEncoder().encode(newValue)
                 vehicles_nonOptional = vehicleUrls
             } catch {
-                //TODO: Log error
+                Logger.coredata.error("Failed to encode vehicles: \(error.localizedDescription)")
             }
         }
     }
@@ -160,7 +161,7 @@ extension PersonEntity {
             do {
                 return try JSONDecoder().decode([String].self, from: data)
             } catch {
-                //TODO: Log error
+                Logger.coredata.error("Failed to decode starships: \(error.localizedDescription)")
                 return []
             }
             
@@ -170,7 +171,7 @@ extension PersonEntity {
                 let starshipUrls = try JSONEncoder().encode(newValue)
                 starships_nonOptional = starshipUrls
             } catch {
-                //TODO: Log error
+                Logger.coredata.error("Failed to encode starships: \(error.localizedDescription)")
             }
         }
     }

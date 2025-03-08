@@ -5,6 +5,7 @@
 //  Created by Vlad on 06/03/2025.
 //
 import CoreData
+import os.log
 
 extension PersonEntity {
     
@@ -16,9 +17,10 @@ extension PersonEntity {
                     process(response: planet, editDate: editDate, in: context)
                 }
                 try context.save()
+                Logger.coredata.debug("Persisted people in CoreData")
             }
         } catch {
-            //TODO: Log Error
+            Logger.coredata.error("Failed to persist PersonResponse: \(error.localizedDescription)")
         }
         
     }

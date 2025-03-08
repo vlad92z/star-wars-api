@@ -5,6 +5,7 @@
 //  Created by Vlad on 06/03/2025.
 //
 import CoreData
+import os.log
 
 extension PlanetEntity {
     
@@ -17,7 +18,7 @@ extension PlanetEntity {
                 planet = fetched
             } else {
                 guard let description = entityDescription(in: context) else {
-                    // TODO: Log error
+                    Logger.coredata.error("Entity Description nil for PlanetEntity")
                     return
                 }
                 planet = PlanetEntity(entity: description, insertInto: context)
@@ -27,7 +28,7 @@ extension PlanetEntity {
             planet.page = Int16(page)
             
         } catch {
-            // TODO: Log error
+            Logger.coredata.error("Failed to fetch planets: \(error.localizedDescription)")
         }
     }
     

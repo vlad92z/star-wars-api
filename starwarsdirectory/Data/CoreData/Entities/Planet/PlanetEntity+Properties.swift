@@ -5,6 +5,7 @@
 //  Created by Vlad on 06/03/2025.
 //
 import CoreData
+import os.log
 
 extension PlanetEntity {
     
@@ -96,7 +97,7 @@ extension PlanetEntity {
             do {
                 return try JSONDecoder().decode([String].self, from: data)
             } catch {
-                //TODO: Log error
+                Logger.coredata.error("Failed to decode films: \(error.localizedDescription)")
                 return []
             }
             
@@ -106,7 +107,7 @@ extension PlanetEntity {
                 let filmUrls = try JSONEncoder().encode(newValue)
                 films_nonOptional = filmUrls
             } catch {
-                //TODO: Log error
+                Logger.coredata.error("Failed to encode films: \(error.localizedDescription)")
             }
         }
     }
@@ -117,7 +118,7 @@ extension PlanetEntity {
             do {
                 return try JSONDecoder().decode([String].self, from: data)
             } catch {
-                //TODO: Log error
+                Logger.coredata.error("Failed to decode residents: \(error.localizedDescription)")
                 return []
             }
             
@@ -127,7 +128,7 @@ extension PlanetEntity {
                 let residentUrls = try JSONEncoder().encode(newValue)
                 residents_nonOptional = residentUrls
             } catch {
-                //TODO: Log error
+                Logger.coredata.error("Failed to encode residents: \(error.localizedDescription)")
             }
         }
     }

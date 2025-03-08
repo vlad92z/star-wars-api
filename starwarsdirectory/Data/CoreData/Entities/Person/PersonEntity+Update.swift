@@ -5,6 +5,7 @@
 //  Created by Vlad on 06/03/2025.
 //
 import CoreData
+import os.log
 
 extension PersonEntity {
     
@@ -17,7 +18,7 @@ extension PersonEntity {
                 person = fetched
             } else {
                 guard let description = entityDescription(in: context) else {
-                    // TODO: Log error
+                    Logger.coredata.error("Entity description nil for PersonEntity")
                     return
                 }
                 person = PersonEntity(entity: description, insertInto: context)
@@ -25,7 +26,7 @@ extension PersonEntity {
             person.edited = editDate
             person.update(with: response)
         } catch {
-            // TODO: Log error
+            Logger.coredata.error("Failed to fetch people: \(error.localizedDescription)")
         }
     }
     

@@ -6,6 +6,7 @@
 //
 import CoreData
 import Combine
+import os.log
 
 class CoreDataPlanetRepository: PaginatedPlanetRepository {
     
@@ -21,7 +22,7 @@ class CoreDataPlanetRepository: PaginatedPlanetRepository {
             let entities = try context.fetch(request)
             return entities.map { $0.planetResponse }
         } catch {
-            //TODO: Log error
+            Logger.coredata.error("Failed to fetch planets: \(error.localizedDescription)")
             return []
         }
     }

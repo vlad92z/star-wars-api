@@ -4,6 +4,8 @@
 //
 //  Created by Vlad on 06/03/2025.
 //
+import os.log
+
 class RemotePersonRepository: PersonRepository {
     
     private let api: PersonAPI
@@ -27,7 +29,7 @@ class RemotePersonRepository: PersonRepository {
                 return results
             }
         } catch {
-            //TODO: Log Error
+            Logger.coredata.error("Failed download people metadata: \(error.localizedDescription)")
             return []
         }
     }

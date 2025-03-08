@@ -28,7 +28,12 @@ struct PlanetDetailView: View {
             }
             Section(header: Text("Residents")) {
                 ForEach(viewModel.residents) { resident in
-                    Text(resident.name)
+                    NavigationLink(destination: {
+                        PersonDetailView(person: resident)
+                    }) {
+                        Text(resident.name)
+                    }
+                    
                 }
                 if viewModel.isLoading {
                     ProgressView()

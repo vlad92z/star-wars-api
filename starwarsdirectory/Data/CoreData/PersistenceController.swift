@@ -37,7 +37,7 @@ struct PersistenceController {
         do {
             try context.save()
         } catch {
-            //TODO: Add Logging
+            Logger.coredata.error("Failed save context: \(error.localizedDescription)")
         }
     }
 }
