@@ -11,11 +11,11 @@ protocol PersonAPI {
     func requestPerson(_ url: String) async throws -> PersonResponse
 }
 
-class AlamoPersonApi: PersonAPI {
+class NetworkPersonApi<API: NetworkAPI>: PersonAPI where API.T == PersonResponse {
     
-    private let api: AlamofireAPI<PersonResponse>
-        
-    init(api: AlamofireAPI<PersonResponse> = AlamofireAPI<PersonResponse>()) {
+    let api: API
+
+    init(api: API = AlamofireAPI<PersonResponse>()) {
         self.api = api
     }
     

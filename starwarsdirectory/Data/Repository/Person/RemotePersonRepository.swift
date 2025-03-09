@@ -10,7 +10,7 @@ class RemotePersonRepository: PersonRepository {
     
     private let api: PersonAPI
     
-    init(api: PersonAPI = AlamoPersonApi()) {
+    init(api: PersonAPI = NetworkPersonApi()) {
         self.api = api
     }
     

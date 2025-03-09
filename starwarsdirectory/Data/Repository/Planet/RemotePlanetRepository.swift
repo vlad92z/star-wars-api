@@ -11,7 +11,7 @@ class RemotePlanetRepository: PaginatedPlanetRepository {
     private let api: PlanetAPI
     private(set) var hasNextPage = true
     
-    init(api: PlanetAPI = AlamoPlanetApi()) {
+    init(api: PlanetAPI = NetworkPlanetApi()) {
         self.api = api
     }
     

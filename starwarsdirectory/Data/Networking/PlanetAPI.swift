@@ -11,11 +11,11 @@ protocol PlanetAPI {
     func requestPlanets(_ url: String, parameters: [String : Any]?) async throws -> PlanetListResponse
 }
 
-class AlamoPlanetApi: PlanetAPI {
+class NetworkPlanetApi<API: NetworkAPI>: PlanetAPI where API.T == PlanetListResponse {
     
-    private let api: AlamofireAPI<PlanetListResponse>
-        
-    init(api: AlamofireAPI<PlanetListResponse> = AlamofireAPI<PlanetListResponse>()) {
+    let api: API
+
+    init(api: API = AlamofireAPI<PlanetListResponse>()) {
         self.api = api
     }
     
