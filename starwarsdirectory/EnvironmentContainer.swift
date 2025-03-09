@@ -9,7 +9,7 @@ import CoreData
 struct EnvironmentContainer {
     let persistenceController: PersistenceController
     let personRepository: PersonRepository
-    let planetProvider: PlanetProvider
+    let planetRepository: PaginatedPlanetRepository
     
     var context: NSManagedObjectContext {
         persistenceController.container.viewContext
@@ -32,10 +32,9 @@ extension EnvironmentContainer {
             coreDataRepository: CoreDataPlanetRepository(context: context),
             remoteRepository: RemotePlanetRepository()
         )
-        let planetProvider = PlanetProvider(repository: planetRepository)
         
         return EnvironmentContainer(persistenceController: persistenceController,
                                     personRepository: personRepository,
-                                    planetProvider: planetProvider)
+                                    planetRepository: planetRepository)
     }
 }

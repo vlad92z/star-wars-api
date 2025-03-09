@@ -1,13 +1,11 @@
 //
-//  PreviewPlanetProvider.swift
+//  PreviewPlanetRepository.swift
 //  starwarsdirectory
 //
 //  Created by Vlad on 02/03/2025.
 //
 
-class PreviewPlanetProvider: PlanetProviding {
-    
-    private var currentIndex = -1
+class PreviewPlanetRepository: PaginatedPlanetRepository {
     private var planetPages: [[PlanetResponse]] = [
         [
             PlanetResponse.preview(name: "Tatooine", url: "https://swapi.dev/api/planets/1/"),
@@ -22,19 +20,9 @@ class PreviewPlanetProvider: PlanetProviding {
         ]
     ]
     
-    var hasNext: Bool { currentIndex + 1 < planetPages.count }
-    
-    var hasPrevious: Bool {  currentIndex > 0 }
-    
-    func loadNext() async -> [PlanetResponse] {
-        guard hasNext else { return [] }
-        currentIndex += 1
-        return planetPages[currentIndex]
-    }
-    
-    func loadPrevious() async -> [PlanetResponse] {
-        guard hasPrevious else { return [] }
-        currentIndex -= 1
-        return planetPages[currentIndex]
+    func getPlanets(for page: Int) async -> [PlanetResponse] {
+        let index = page - 1
+        let pageExists = planetPages.count > index
+        return pageExists ? planetPages[page] : []
     }
 }

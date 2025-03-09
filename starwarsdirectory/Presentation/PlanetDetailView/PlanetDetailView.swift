@@ -11,7 +11,8 @@ struct PlanetDetailView: View {
     @StateObject var viewModel: ViewModel
     
     init(planet: PlanetResponse, personRepository: PersonRepository) {
-        _viewModel = StateObject(wrappedValue: ViewModel(personRepository: personRepository, planet: planet))
+        _viewModel = StateObject(wrappedValue: ViewModel(personRepository: personRepository,
+                                                         planet: planet))
     }
     
     var body: some View {

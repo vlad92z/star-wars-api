@@ -11,8 +11,8 @@ struct PlanetListView: View {
     @Environment(\.personRepository) private var personRepository
     @StateObject var viewModel: ViewModel
     
-    init(planetProvider: PlanetProviding) {
-        _viewModel = StateObject(wrappedValue: ViewModel(planetProvider: planetProvider))
+    init(repository: PaginatedPlanetRepository) {
+        _viewModel = StateObject(wrappedValue: ViewModel(repository: repository))
     }
     
     var body: some View {
@@ -40,7 +40,6 @@ struct PlanetListView: View {
 
 #Preview {
     NavigationStack {
-        PlanetListView(planetProvider: PreviewPlanetProvider())
+        PlanetListView(repository: PreviewPlanetRepository())
     }
-    
 }

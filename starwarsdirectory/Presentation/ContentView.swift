@@ -9,16 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @Environment(\.planetProvider) private var planetProvider
+    @Environment(\.planetRepository) private var planetRepository
     
     var body: some View {
         NavigationStack {
-            PlanetListView(planetProvider: planetProvider)
+            PlanetListView(repository: planetRepository)
         }
     }
 }
 
 #Preview {
     ContentView()
-        .environment(\.planetProvider, PreviewPlanetProvider())
+        .environment(\.planetRepository, PreviewPlanetRepository())
 }

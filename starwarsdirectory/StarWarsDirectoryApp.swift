@@ -15,7 +15,7 @@ struct StarWarsDirectoryApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.planetProvider, environment.planetProvider)
+                .environment(\.planetRepository, environment.planetRepository)
                 .environment(\.personRepository, environment.personRepository)
                 .environment(\.managedObjectContext, environment.context)
         }

@@ -10,22 +10,23 @@ extension PlanetListView {
     
     class ViewModel: ObservableObject {
         
-        private let planetProvider: PlanetProviding
+        private let repository: PaginatedPlanetRepository
+        
+        private var currentPage = 0
         
         @Published var planets: [PlanetResponse] = []
         @Published var canLoadMore: Bool = true
-        @Published var errorMessage: String?
         
-        init(planetProvider: PlanetProviding) {
-            self.planetProvider = planetProvider
+        init(repository: PaginatedPlanetRepository) {
+            self.repository = repository
         }
         
         func loadMore() async {
             guard canLoadMore else {
                 return
             }
-
-            let newPlanets = await planetProvider.loadNext()
+            currentPage += 1
+            let newPlanets = await repository.getPlanets(for: currentPage)
             await MainActor.run {
                 if newPlanets.isEmpty {
                     canLoadMore = false
