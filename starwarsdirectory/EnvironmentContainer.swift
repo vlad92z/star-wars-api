@@ -24,12 +24,12 @@ extension EnvironmentContainer {
         let context = persistenceController.container.viewContext
         
         let personRepository = CachingPersonRepository(
-            coreDataRepository: CoreDataPersonRepository(context: context),
+            persistingRepository: CoreDataPersonRepository(context: context),
             remoteRepository: RemotePersonRepository()
         )
         
         let planetRepository = CachingPlanetRepository(
-            coreDataRepository: CoreDataPlanetRepository(context: context),
+            persistingRepository: CoreDataPlanetRepository(context: context),
             remoteRepository: RemotePlanetRepository()
         )
         

@@ -8,7 +8,11 @@ import CoreData
 import Combine
 import os.log
 
-class CoreDataPlanetRepository: PaginatedPlanetRepository {
+protocol PersistingPlanetRepository: PaginatedPlanetRepository {
+    func persist(planets: [PlanetResponse], for page: Int) async
+}
+
+class CoreDataPlanetRepository: PersistingPlanetRepository {
     
     private let context: NSManagedObjectContext
     

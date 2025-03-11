@@ -8,7 +8,11 @@ import CoreData
 import Combine
 import os.log
 
-class CoreDataPersonRepository: PersonRepository {
+protocol PersistingPersonRepository: PersonRepository {
+    func persist(people: [PersonResponse]) async
+}
+
+class CoreDataPersonRepository: PersistingPersonRepository {
     
     private let context: NSManagedObjectContext
     

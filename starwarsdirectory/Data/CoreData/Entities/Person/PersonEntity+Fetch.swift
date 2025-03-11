@@ -24,6 +24,8 @@ extension PersonEntity {
         guard !urls.isEmpty else {
             return fetch(NSPredicate(value: false))
         }
-        return fetch(NSPredicate(format: "%K IN %@", KeyPath.url, urls as NSArray))
+        let requestByIds = fetch(NSPredicate(format: "%K IN %@", KeyPath.url, urls as NSArray))
+        requestByIds.sortDescriptors = [NSSortDescriptor(key: KeyPath.url, ascending: true)]
+        return requestByIds
     }
 }

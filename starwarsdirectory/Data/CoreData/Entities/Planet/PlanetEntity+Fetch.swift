@@ -21,6 +21,8 @@ extension PlanetEntity {
     }
     
     static func fetch(page: Int) -> NSFetchRequest<PlanetEntity> {
-        return fetch(NSPredicate(format: "%K == %i", KeyPath.page, page))
+        let request = fetch(NSPredicate(format: "%K == %i", KeyPath.page, page))
+        request.sortDescriptors = [NSSortDescriptor(key: KeyPath.url, ascending: true)]
+        return request
     }
 }

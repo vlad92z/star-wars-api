@@ -24,7 +24,7 @@ struct NetworkPersonApiTests {
     }
     
     @Test("PersonAPI rethrows error from API")
-    func requestPersonThrows() async throws {
+    func requestPersonThrows() async {
         let expectedError = NetworkError.invalidResponse(statusCode: 401, error: nil)
         mockApi.result = .failure(expectedError)
         let personApi = NetworkPersonApi(api: mockApi)

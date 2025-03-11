@@ -6,7 +6,7 @@
 //
 @testable import starwarsdirectory
 
-class MockNetworkApi<T: Decodable>: NetworkAPI {
+final class MockNetworkApi<T: Decodable>: NetworkAPI {
     
     var result: Result<T, NetworkError>?
     var url: String?
